@@ -4,9 +4,9 @@ from traceback import format_exc
 import json
 
 dir = os.path.dirname(__file__)
-sys.path.insert(0, os.path.join(dir, '../crud'))
+sys.path.insert(0, os.path.join(dir, '../'))
 
-import create, read, update, delete
+from crud import create, read, update, delete
 
 C = create.Create()
 R = read.Read()

@@ -2,9 +2,9 @@ import os
 import sys
 
 dir = os.path.dirname(__file__)
-sys.path.insert(0, os.path.join(dir, '../crud'))
+sys.path.insert(0, os.path.join(dir, '../'))
 
-import create
+from crud import create
 
 C = create.Create()
 
