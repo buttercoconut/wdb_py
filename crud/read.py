@@ -50,7 +50,6 @@ class Read(object):
             with open(datapath, "r") as readfile:
                 data = json.load(readfile)
                 t[datapath.split('/')[-1]] = data
-
         except:
             pass
 
@@ -71,18 +70,12 @@ class Read(object):
         # value index search
         for datapath in datalist:
 
-            f = open(datapath, "r")
-            low_data = f.read()
-
-            data_sep = low_data.split('$$$')
-            for each in data_sep:
-                try:
-                    if value in each:
-                        listOfIndex.append(each.split('@@@')[0])
-                except IndexError:
-                    pass
-            f.close()
-
+            try:
+                with open(datapath, "r") as readfile:
+                    data = json.load(readfile)
+                    t[datapath.split('/')[-1]] = data
+            except:
+                pass
 
         # choosed index of rows
         for datapath in datalist:

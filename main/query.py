@@ -23,11 +23,13 @@ if __name__ == "__main__":
         C.create(db, table, data)
     elif task == "r":
         if data:
-            print(R.read_keyword(db, table, data))
+            t = R.read_keyword(db, table, data)
+            print(dict(t))
             print("-----------------------------")
             print(R.read_value(db, table, data))
         elif data == "":
-            print(R.read_all(db, table))
+            t = R.read_all(db, table)
+            print(dict(t))
     elif task == "d":
         if data:
             print("deleted!!")
