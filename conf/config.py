@@ -1,9 +1,9 @@
 defult = {
     "db_store_path": "/Users/efdev2",
-    "worker": 2
+    "workers": 8
 }
 
 local = {
     "db_store_path": "/Users/yutw",
-    "worker": 2
+    "workers": 2
 }
