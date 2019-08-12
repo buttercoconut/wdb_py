@@ -21,18 +21,19 @@ class Create(object):
         self.tb = ""
         self.data = ""
 
-    def create(self, db, tb, data):
+    def key_search(self, db, tb, data):
 
         self.storePath = conf['db_store_path']
 
-        pathlink = self.storePath + "/" + db + "/" + tb
+        pathlink = self.storePath + "/" + db + "/key_search/" + tb
 
         # mkdir path
-        stack_dir = ""
-        for each_dir in pathlink.split("/")[1:]:
-            stack_dir += "/" + each_dir
-            if not os.path.isdir(stack_dir):
-                os.mkdir(stack_dir)
+        if not os.path.isdir(pathlink):
+            stack_dir = ""
+            for each_dir in pathlink.split("/")[1:]:
+                stack_dir += "/" + each_dir
+                if not os.path.isdir(stack_dir):
+                    os.mkdir(stack_dir)
 
         idx = 0
         try:
@@ -53,5 +54,25 @@ class Create(object):
         for key in t.keys():
             insert_data = {idx: t[key]}
             with open(pathlink + "/" + key, "w") as outfile:
-                insert_data.update(total_data[key])
-                json.dump(insert_data, outfile)
+                try:
+                    insert_data.update(total_data[key])
+                except:
+                    pass
+                finally:
+                    json.dump(insert_data, outfile)
+
+
+    def rows_search(self, db, tb, data):
+
+        self.storePath = conf['db_store_path']
+
+        pathlink = self.storePath + "/" + db + "/rows_search/" + tb
+
+        # mkdir path
+        if not os.path.isdir(pathlink):
+            stack_dir = ""
+            for each_dir in pathlink.split("/")[1:]:
+                stack_dir += "/" + each_dir
+                if not os.path.isdir(stack_dir):
+                    os.mkdir(stack_dir)
+
